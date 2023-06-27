@@ -1,0 +1,540 @@
+.ipod-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    position: relative;
+    height: 90vh;
+    width: 480px;
+    border-radius: 20px;
+    border: solid 4px rgba(255, 255, 255, 0.397);
+    // background: radial-gradient(white, rgb(241, 241, 241), rgb(255, 255, 255));
+    background: linear-gradient(45deg, white, rgb(236, 236, 236) 10%, rgb(255, 255, 255) 30%, rgb(221, 220, 220) 40%, #D9D9D2 50%);
+    box-shadow: inset 0 0 35px 5px rgba(0, 0, 0, 0.24);
+
+}
+
+.screen-container {
+    width: 92%;
+    position: relative;
+    z-index: 3;
+    cursor: default;
+    .screen-content {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        height: 50vh;
+        border: 4px solid black;
+        border-radius: 10px;
+        color: black;
+        background-color: rgb(255, 255, 255);
+        box-shadow: inset 0 0 20px 2px rgb(225, 235, 238);
+        transition: 1.5s;
+        
+        .left-screen-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 255px;
+            box-shadow: 10px 0 20px -10px black;
+            z-index: 5;
+            .app-title {
+                width: 100%;
+                padding: 5px 0 5px 0;
+                font-size: 26px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                background: linear-gradient(to bottom, white, silver);
+                border-radius: 10px 0 0 0;
+                border-bottom: solid 1px rgb(117, 117, 117);
+            }
+            div {
+                width: 100%;
+                .user-selection {
+                    display: flex;
+                    align-items: center;
+                    height: 40px;
+                    font-weight: bold;
+                    font-size: 20px;
+                    cursor: pointer;
+                    div {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 4px;
+                    }
+                    span {
+                        transform: translateX(-3px);
+                    }
+                }
+                .active-tab {
+                    display: flex;
+                    align-items: center;
+                    height: 40px;
+                    font-weight: bold;
+                    font-size: 20px;
+                    color: white;
+                    background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    cursor: pointer;
+                    div {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 4px;
+                    }
+                    span {
+                        transform: translateX(-3px);
+                    }
+                }
+
+                .user-selection:hover {
+                    color: white;
+                    background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                }
+                
+            }
+            
+        }
+
+        .right-screen-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            width: 255px;
+            // background: url("/DavidBowie.png");
+            // background-size: 50vh;
+            // background-repeat: no-repeat;
+            .subscriber-form-container {
+                overflow-y: auto;
+                h2 {
+                    font-size: 3vh;
+                    margin: 6px;
+                }
+                .tag-line {
+                    margin: 1rem;
+                    font-weight: bold;
+                    font-size: 2.1vh;
+                }
+                .subscribe-button {
+                    margin: 1rem;
+                    font-size: 2.5vh;
+                    font-weight: bold;
+                    border: solid 2px black;
+                    border-radius: 10px;
+                    color: white;
+                    background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    cursor: pointer;
+                }
+            }
+
+            .artist-form-containter {
+                overflow-y: auto;
+                h2 {
+                    font-size: 3vh;
+                    margin: 6px;
+                }
+                #song-description {
+                    height: 60px;
+                    resize: none;
+                }
+                .submit-button {
+                    margin: 16px;
+                    font-size: 2.5vh;
+                    font-weight: bold;
+                    border: solid 2px black;
+                    border-radius: 10px;
+                    color: white;
+                    background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    cursor: pointer;
+                }
+            }
+
+            .song-list-container {
+                height: 100%;
+                overflow-y: auto;
+                .song-list-content {
+                    .song-card {
+                        display: flex;
+                        font-size: 12px;
+                        
+                        .song-info {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 100%;
+                            // white-space:nowrap;
+                            text-align: left;
+                            padding-left: 5px;
+                            // overflow-x: auto;
+                            div {
+                                margin: 0;
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                            .song-name-container {
+                                // width: 300px;
+                                overflow-x: scroll;
+                                white-space: nowrap;
+                            }
+                            p {
+                                margin: 0;
+                                text-align: left;
+                            }
+                        }
+                        .album-placeholder {
+                            height: 50px;
+                            width: 50px;
+                            background-color: rgb(165, 165, 165);
+                            background-position: center;
+                            background-size: cover;
+                            .song-image {
+                                height: 50px;
+                                width: 50px;
+                            }
+                        }
+                    }
+                    .song-card:hover {
+                        color: white;
+                        background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(101, 101, 238));
+                    }
+                }
+            }
+
+            .about-container {
+                .button {
+                    padding: 3px;
+                    text-decoration: none;
+                    font-size: 2.5vh;
+                    font-weight: bold;
+                    border: solid 2px black;
+                    border-radius: 10px;
+                    color: white;
+                    background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.input-container {
+    position: relative;
+    .name-label {
+        position: absolute;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: white;
+        padding: 0 2px 0 2px;
+        transform: translate3d(9px, 3.2px, 0);
+    }
+    .user-input {
+        width: 165px;
+        height: 35px;
+        margin-top: 1rem;
+        padding-left: 5px;
+        background-color: white;
+        border: solid 2px silver;
+        border-radius: 5px;
+        color: black;
+        outline: none;
+    }
+    .user-input:focus {
+        border: solid 2px black;
+    }
+}
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    position: relative;
+    z-index: 3;
+
+    .main-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32vh;
+        min-width: 32vh;
+        border: solid 2px rgb(163, 163, 163);
+        border-radius: 50%;
+        background: silver;
+        
+
+        .inner-circle {
+            min-height: 14vh;
+            min-width: 14vh;
+            border: solid 2px rgb(97, 97, 97);
+            border-radius: 50%;
+            background: radial-gradient(white, #D9D9D2);
+        }
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 0;
+    }
+
+    100% {
+        content: none;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submit-modal::backdrop {
+    background: rgba(0, 0, 0, 0.37);
+}
+.submit-modal {
+    background: #d9d9d2f1;
+    border-radius: 20px;
+    cursor: default;
+    .modal-content {
+        color: black;
+        font-weight: bold;
+
+        .playlist-container {
+            img {
+                height: 60px;
+                background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                border: solid 2px white;
+                border-radius: 15px;
+            }
+        }
+    }
+    .button {
+        padding: 3px;
+        margin: 1rem;
+        text-decoration: none;
+        font-size: 2.5vh;
+        font-weight: bold;
+        border: solid 2px black;
+        border-radius: 10px;
+        color: black;
+        background: white;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    .button:hover {
+        color: white;
+        background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+    }
+}
+/****** MEDIA QUERIES FOR DIFFERENT SCREEN SIZES ******/
+
+/**** MAX-WIDTH 425PX ****/
+@media (max-width: 425px) {
+    .ipod-container {
+        height: 97vh;
+        width: 97vw;
+    }
+
+    .screen-container {
+        .screen-content {
+            .left-screen-content {
+                .app-title {
+                    font-size: 19px;
+                }
+                div {
+                    .user-selection {
+                        font-size: 16px;
+                    }
+                    .active-tab {
+                        font-size: 16px;
+                    }
+                    .user-selection:hover {
+                        color: white;
+                        background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    }
+                    
+                }
+            }
+            .right-screen-content {
+                .subscriber-form-container {
+                    h2 {
+                        font-size: 16px
+                    }
+                    .tag-line {
+                        margin: 9px;
+                    }
+                    .subscribe-button {
+                        margin: 1rem;
+                    }
+                }
+                .artist-form-containter {
+                    h2 {
+                        font-size: 16px;
+                    }
+                    #song-description {
+                        height: 25px;
+                    }
+                }
+                .about-container {
+                    font-size: 12px;
+                    h1 {
+                        font-size: 22px;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .input-container {
+        .name-label {
+            font-size: 12px;
+            transform: translate3d(9px, 8px, 0);
+        }
+        .user-input {
+            width: 135px;
+            height: 28px;
+        }  
+    }
+}
+
+/**** MAX-WIDTH 375PX ****/
+@media (max-width: 375px) {
+    .ipod-container {
+        height: 97vh;
+        width: 97vw;
+    }
+
+    .screen-container {
+        .screen-content {
+            .left-screen-content {
+                .app-title {
+                    font-size: 19px;
+                }
+                div {
+                    .user-selection {
+                        font-size: 16px;
+                    }
+                    .active-tab {
+                        font-size: 16px;
+                    }
+                    .user-selection:hover {
+                        color: white;
+                        background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    }
+                    
+                }
+            }
+            .right-screen-content {
+                .subscriber-form-container {
+                    h2 {
+                        font-size: 16px
+                    }
+                    .tag-line {
+                        margin: 9px;
+                    }
+                    .subscribe-button {
+                        margin: 1rem;
+                    }
+                }
+                .artist-form-containter {
+                    h2 {
+                        font-size: 16px;
+                    }
+                    #song-description {
+                        height: 25px;
+                    }
+                }
+                .about-container {
+                    font-size: 12px;
+                    h1 {
+                        font-size: 22px;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .input-container {
+        .name-label {
+            font-size: 12px;
+            transform: translate3d(9px, 8px, 0);
+        }
+        .user-input {
+            width: 125px;
+            height: 28px;
+        }  
+    }
+}
+
+/**** MAX-WIDTH 320PX ****/
+@media (max-width: 320px) {
+    .ipod-container {
+        height: 97vh;
+        width: 97vw;
+    }
+
+    .screen-container {
+        .screen-content {
+            .left-screen-content {
+                .app-title {
+                    font-size: 16px;
+                }
+                div {
+                    .user-selection {
+                        font-size: 14px;
+                    }
+                    .active-tab {
+                        font-size: 14px;
+                    }
+                    .user-selection:hover {
+                        color: white;
+                        background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
+                    }
+                    
+                }
+            }
+            .right-screen-content {
+                .subscriber-form-container {
+                    h2 {
+                        font-size: 16px
+                    }
+                    .tag-line {
+                        margin: 6px;
+                    }
+                    .subscribe-button {
+                        margin: 1rem;
+                    }
+                }
+                .artist-form-containter {
+                    h2 {
+                        font-size: 16px;
+                    }
+                    #song-description {
+                        height: 25px;
+                    }
+                }
+                .about-container {
+                    font-size: 12px;
+                    h1 {
+                        font-size: 18px;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .input-container {
+        .name-label {
+            font-size: 11px;
+            transform: translate3d(9px, 8px, 0);
+        }
+        .user-input {
+            width: 105px;
+            height: 25px;
+        }  
+    }
+}
