@@ -86,8 +86,8 @@ const handleSubmit = (e) => {
               <label className="name-label">Email</label>
               <input type="text-box" name="artist_email" className="user-input" onChange={handleEmailChange}/>
             </div>
+          <button className="submit-button" onClick={sendClick}>Submit</button>
         </form>
-        <button className="submit-button" onClick={sendClick}>Submit</button>
     </div>
   )
 }
