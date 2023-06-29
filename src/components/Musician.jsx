@@ -21,49 +21,52 @@ const Musician = () => {
   }
 
   function handleArtistChange(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setArtistName(e.target.value)
-    console.log(artistName)
+    // console.log(artistName)
   }
 
   function handleSongChange(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setTrackName(e.target.value)
-    console.log(trackName)
+    // console.log(trackName)
     
   }
 
   function handleDescriptionChange(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setTrackDescription(e.target.value)
-    console.log(trackDescription)
+    // console.log(trackDescription)
   }
 
   function handleEmailChange(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setEmail(e.target.value)
-    console.log(email)
+    // console.log(email)
   }
-
-  function sendClick(){
-    console.log("Hi from Submit")
-    console.log(musicianObj)
-
-    axios.post('https://sheet.best/api/sheets/4d70ea5e-6e55-4c7a-9947-7d10ec2ef460', musicianObj)
-    .then(response => {
-      console.log(response);
-    })
-
-    setArtistName('')
-    setTrackName('')
-    setTrackDescription('')
-    setEmail('')
-}
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  getModal().showModal()
-  e.target.reset()
+  if (artistName === "" || trackName === "" || trackDescription === "" || email === "") {
+    return
+  }
+  axios.post('https://sheet.best/api/sheets/4d70ea5e-6e55-4c7a-9947-7d10ec2ef460', musicianObj)
+  .then(response => {
+    if (response.status === 200) {
+      console.log("POST request successful")
+      getModal().showModal()
+      e.target.reset()
+      setArtistName('')
+      setTrackName('')
+      setTrackDescription('')
+      setEmail('')
+    } else {
+      console.log("POST request failed")
+    }
+  })
+  .catch(error => {
+    console.log('Error occurred during POST request:', error)
+  })
 }
 
   return (
@@ -86,7 +89,7 @@ const handleSubmit = (e) => {
               <label className="name-label">Email</label>
               <input type="text-box" name="artist_email" className="user-input" onChange={handleEmailChange}/>
             </div>
-          <button className="submit-button" onClick={sendClick}>Submit</button>
+          <button type="submit" className="submit-button" >Submit</button>
         </form>
     </div>
   )
