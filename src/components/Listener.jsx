@@ -28,10 +28,9 @@ const Listener = () => {
     console.log(phoneNumber)
   }
 
-  function sendClick(e){
+  function sendClick(){
     console.log("Hi from Submit")
     console.log(userObj)
-
 
     axios.post('https://sheet.best/api/sheets/c38378fd-348d-4169-9f36-f8cbabea15ae', userObj)
     .then(response => {
@@ -45,7 +44,9 @@ const Listener = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     getModal().showModal()
+    e.target.reset()
   }
+
   return (
     <div className="subscriber-form-container">
         <h2>The best music, globally</h2>
@@ -67,7 +68,7 @@ const Listener = () => {
                 One song, one playlist, one album
             </div>
             <input type="submit" value="Subscribe" className="subscribe-button" onClick={sendClick} />
-        </form>
+        </form >
     </div>
   )
 }

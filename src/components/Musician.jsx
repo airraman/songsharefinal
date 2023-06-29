@@ -3,6 +3,11 @@ import axios from 'axios';
 
 const Musician = () => {
 
+  const getModal = () => {
+    const modal = document.querySelector(".submit-modal")
+    return modal
+  }
+
   const [artistName, setArtistName] = useState("")
   const [trackName, setTrackName] = useState("")
   const [trackDescription, setTrackDescription] = useState("")
@@ -14,7 +19,6 @@ const Musician = () => {
     trackDescription, 
     email
   }
-
 
   function handleArtistChange(e){
     console.log(e.target.value)
@@ -41,8 +45,7 @@ const Musician = () => {
     console.log(email)
   }
 
-
-  function sendClick(e){
+  function sendClick(){
     console.log("Hi from Submit")
     console.log(musicianObj)
 
@@ -57,13 +60,16 @@ const Musician = () => {
     setEmail('')
 }
 
-
-
+const handleSubmit = (e) => {
+  e.preventDefault()
+  getModal().showModal()
+  e.target.reset()
+}
 
   return (
     <div className="artist-form-containter">
         <h2>Share your music, globally</h2>
-        <form className="musician-form">
+        <form className="musician-form" onSubmit={handleSubmit}>
             <div className="input-container">
               <label className="name-label">Artist Name</label>
               <input type="text" name="artist_name" className="user-input" onChange={handleArtistChange}/>
