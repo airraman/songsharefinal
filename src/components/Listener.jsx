@@ -14,18 +14,18 @@ const Listener = () => {
   let userObj ={
     userName,
     phoneNumber
-}
+  }
 
   function handleUserName(event){
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setUserName(event.target.value)
-    console.log(userName)
+    // console.log(userName)
   }
 
   function handlePhoneNumber(event){
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setPhoneNumber(event.target.value)
-    console.log(phoneNumber)
+    // console.log(phoneNumber)
   }
 
   function sendClick(){
@@ -39,12 +39,28 @@ const Listener = () => {
 
     setUserName('')
     setPhoneNumber('')
-}
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    getModal().showModal()
-    e.target.reset()
+    if (userName === "" || phoneNumber === "") {
+      return
+    }
+    axios.post('https://sheet.best/api/sheets/c38378fd-348d-4169-9f36-f8cbabea15ae', userObj)
+    .then(response => {
+      if (response.status === 200) {
+        console.log("POST request successful")
+        getModal().showModal()
+        e.target.reset()
+        setUserName('')
+        setPhoneNumber('')
+      } else {
+        console.log("POST request failed")
+      }
+    })
+    .catch(error => {
+      console.log('Error occurred during POST request:', error)
+    })
   }
 
   return (
@@ -67,7 +83,7 @@ const Listener = () => {
                 One text, every Friday.<br/>
                 One song, one playlist, one album
             </div>
-            <input type="submit" value="Subscribe" className="subscribe-button" onClick={sendClick} />
+            <input type="submit" value="Subscribe" className="subscribe-button" />
         </form >
     </div>
   )
