@@ -48,12 +48,13 @@ const Musician = () => {
 const handleSubmit = (e) => {
   e.preventDefault()
   if (artistName === "" || trackName === "" || trackDescription === "" || email === "") {
+    console.log("Input field is blank")
     return
   }
   axios.post('https://sheet.best/api/sheets/4d70ea5e-6e55-4c7a-9947-7d10ec2ef460', musicianObj)
   .then(response => {
     if (response.status === 200) {
-      console.log("POST request successful")
+      console.log("POST request successful", musicianObj)
       getModal().showModal()
       e.target.reset()
       setArtistName('')
