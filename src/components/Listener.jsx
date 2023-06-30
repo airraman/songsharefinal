@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 import axios from 'axios';
 
 const Listener = () => {
@@ -28,28 +30,16 @@ const Listener = () => {
     // console.log(phoneNumber)
   }
 
-  function sendClick(){
-    console.log("Hi from Submit")
-    console.log(userObj)
-
-    axios.post('https://sheet.best/api/sheets/c38378fd-348d-4169-9f36-f8cbabea15ae', userObj)
-    .then(response => {
-      console.log(response);
-    })
-
-    setUserName('')
-    setPhoneNumber('')
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     if (userName === "" || phoneNumber === "") {
+      console.log("Input field is blank")
       return
     }
     axios.post('https://sheet.best/api/sheets/c38378fd-348d-4169-9f36-f8cbabea15ae', userObj)
     .then(response => {
       if (response.status === 200) {
-        console.log("POST request successful")
+        console.log("POST request successful", userObj)
         getModal().showModal()
         e.target.reset()
         setUserName('')
@@ -71,13 +61,14 @@ const Listener = () => {
               <label className="name-label">
                   Enter Name
               </label>
-              <input type="text" name="user-name" className="user-input" onChange={handleUserName}></input>
+              <input type="text" name="user-name" className="user-input" onChange={(e) => setUserName(e.target.value)}></input>
             </div>
             <div className="input-container">
-              <label className="name-label">
+              <label className="phone-label">
                   Enter Number
               </label>
-              <input type="number" name="user-number" className="user-input" onChange={handlePhoneNumber}></input>
+              {/* <input type="number" name="user-number" className="user-input" onChange={handlePhoneNumber}></input> */}
+              <PhoneInput defaultCountry="US" onChange={setPhoneNumber}/>
             </div>
             <div className="tag-line">
                 One text, every Friday.<br/>

@@ -136,6 +136,7 @@
                 }
                 #song-description {
                     height: 60px;
+                    padding-top: 10px;
                     resize: none;
                 }
                 .submit-button {
@@ -157,29 +158,37 @@
                     .song-card {
                         display: flex;
                         font-size: 12px;
-                        
+                        width: 100%;
                         .song-info {
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
-                            width: 100%;
-                            // white-space:nowrap;
                             text-align: left;
                             padding-left: 5px;
-                            // overflow-x: auto;
                             div {
                                 margin: 0;
                                 font-size: 16px;
                                 font-weight: bold;
                             }
                             .song-name-container {
-                                // width: 300px;
-                                overflow-x: scroll;
+                                overflow: hidden;
                                 white-space: nowrap;
+                                width: 150px;
+                                span {
+                                    display: inline-block;
+                                }
                             }
                             p {
                                 margin: 0;
                                 text-align: left;
+                            }
+                        }
+                        .song-info:hover {
+                            .song-name-container {
+                                span {
+                                    // color: red;
+                                    animation: marquee 5s linear infinite;
+                                }
                             }
                         }
                         .album-placeholder {
@@ -197,6 +206,7 @@
                     .song-card:hover {
                         color: white;
                         background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(101, 101, 238));
+                        
                     }
                 }
             }
@@ -227,6 +237,14 @@
         background-color: white;
         padding: 0 2px 0 2px;
         transform: translate3d(9px, 3.2px, 0);
+    }
+    .phone-label {
+        position: absolute;
+        background-color: white;
+        font-size: 16px;
+        font-weight: bold;
+        left: 0;
+        transform: translate3d(32px, 4px, 0);
     }
     .user-input {
         width: 165px;
@@ -286,6 +304,16 @@
     }
 }
 
+@keyframes marquee {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+}
+
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -330,6 +358,33 @@ input::-webkit-inner-spin-button {
         background: linear-gradient(to bottom, rgb(125, 143, 240), rgb(66, 66, 219));
     }
 }
+
+/***** Phone Number Library CSS *****/
+.PhoneInput {
+    display: block;
+}
+.PhoneInputCountry {
+    position: absolute;
+    bottom: 13px;
+    left: 25px;
+}
+.PhoneInputInput {
+    flex: none;
+    width: 165px;
+    height: 35px;
+    margin-top: 1rem;
+    padding-left: 5px;
+    background-color: white;
+    border: solid 2px silver;
+    border-radius: 5px;
+    color: black;
+    outline: none;
+    text-indent: 40px;
+}
+.PhoneInputInput:focus {
+    border: solid 2px black;
+}
+
 /****** MEDIA QUERIES FOR DIFFERENT SCREEN SIZES ******/
 
 /**** MAX-WIDTH 425PX ****/
@@ -386,6 +441,17 @@ input::-webkit-inner-spin-button {
                         margin: 5px;
                     }
                 }
+                .song-list-container {
+                    .song-list-content {
+                        .song-card {
+                            .song-info {
+                                .song-name-container {
+                                    width: 130px;
+                                }
+                            }
+                        } 
+                    }    
+                }
             }
         }
     }
@@ -398,6 +464,31 @@ input::-webkit-inner-spin-button {
             width: 135px;
             height: 28px;
         }  
+    }
+    // .PhoneInput {
+    //     display: block;
+    // }
+    .PhoneInputCountrySelect {
+        max-height: 150px;
+        overflow: scroll;
+    }
+    .PhoneInputCountry {
+        position: absolute;
+        bottom: 10px;
+        left: 25px;
+    }
+    .PhoneInputInput {
+        flex: none;
+        width: 135px;
+        height: 28px;
+        // margin-top: 1rem;
+        padding-left: 5px;
+        background-color: white;
+        border: solid 2px silver;
+        border-radius: 5px;
+        color: black;
+        outline: none;
+        text-indent: 40px;
     }
 }
 
@@ -454,6 +545,17 @@ input::-webkit-inner-spin-button {
                         font-size: 22px;
                         margin: 5px;
                     }
+                }
+                .song-list-container {
+                    .song-list-content {
+                        .song-card {
+                            .song-info {
+                                .song-name-container {
+                                    width: 100px;
+                                }
+                            }
+                        } 
+                    }    
                 }
             }
         }

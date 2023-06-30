@@ -13,7 +13,7 @@ const SongList = ({songList}) => {
                             <img src={song.album} className="song-image"/>
                         </div>
                         <div className="song-info">
-                            <div>{song.song_name}</div>
+                            <div className="song-name-container"><span>{song.song_name}</span></div>
                             <p>{song.artist}</p>
                         </div>
                     </div>
