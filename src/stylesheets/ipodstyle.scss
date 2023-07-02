@@ -480,8 +480,8 @@ input::-webkit-inner-spin-button {
     
     .PhoneInputCountry {
         position: absolute;
-        bottom: 10px;
-        left: 29px;
+        bottom: 11px;
+        left: 26px;
         --PhoneInputCountryFlag-height: 12px;
     }
     .PhoneInputInput {
@@ -495,7 +495,7 @@ input::-webkit-inner-spin-button {
         border-radius: 5px;
         color: black;
         outline: none;
-        text-indent: 38px;
+        text-indent: 34px;
     }
 }
 
@@ -583,13 +583,13 @@ input::-webkit-inner-spin-button {
     }
     .PhoneInputCountry {
         position: absolute;
-        bottom: 11px;
-        left: 22px;
+        bottom: 11.5px;
+        left: 20px;
         --PhoneInputCountryFlag-height: 11px;
     }
     .PhoneInputInput {
         width: 125px;
-        text-indent: 35px;
+        text-indent: 33px;
     }
 }
 
@@ -677,13 +677,13 @@ input::-webkit-inner-spin-button {
     }
     .PhoneInputCountry {
         position: absolute;
-        bottom: 11px;
-        left: 18px;
+        bottom: 11.5px;
+        left: 17px;
         --PhoneInputCountryFlag-height: 11px;
     }
     .PhoneInputInput {
         width: 105px;
-        text-indent: 32px;
+        text-indent: 31px;
         font-size: 11px;
     }
 }
