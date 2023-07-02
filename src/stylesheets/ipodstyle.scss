@@ -244,7 +244,7 @@
         font-size: 16px;
         font-weight: bold;
         left: 0;
-        transform: translate3d(32px, 4px, 0);
+        transform: translate3d(32px, 3.2px, 0);
     }
     .user-input {
         width: 165px;
@@ -384,7 +384,11 @@ input::-webkit-inner-spin-button {
 .PhoneInputInput:focus {
     border: solid 2px black;
 }
-
+.PhoneInputCountrySelect {
+    // max-height: 150px;
+    // overflow: scroll;
+    // background: #D9D9D2;
+}
 /****** MEDIA QUERIES FOR DIFFERENT SCREEN SIZES ******/
 
 /**** MAX-WIDTH 425PX ****/
@@ -460,6 +464,10 @@ input::-webkit-inner-spin-button {
             font-size: 12px;
             transform: translate3d(9px, 8px, 0);
         }
+        .phone-label {
+            font-size: 12px;
+            transform: translate3d(30px, 7.6px, 0);
+        }
         .user-input {
             width: 135px;
             height: 28px;
@@ -468,14 +476,13 @@ input::-webkit-inner-spin-button {
     // .PhoneInput {
     //     display: block;
     // }
-    .PhoneInputCountrySelect {
-        max-height: 150px;
-        overflow: scroll;
-    }
+    
+    
     .PhoneInputCountry {
         position: absolute;
         bottom: 10px;
-        left: 25px;
+        left: 29px;
+        --PhoneInputCountryFlag-height: 12px;
     }
     .PhoneInputInput {
         flex: none;
@@ -488,7 +495,7 @@ input::-webkit-inner-spin-button {
         border-radius: 5px;
         color: black;
         outline: none;
-        text-indent: 40px;
+        text-indent: 38px;
     }
 }
 
@@ -565,10 +572,24 @@ input::-webkit-inner-spin-button {
             font-size: 12px;
             transform: translate3d(9px, 8px, 0);
         }
+        .phone-label {
+            font-size: 12px;
+            transform: translate3d(23px, 7.6px, 0);
+        }
         .user-input {
             width: 125px;
             height: 28px;
         }  
+    }
+    .PhoneInputCountry {
+        position: absolute;
+        bottom: 11px;
+        left: 22px;
+        --PhoneInputCountryFlag-height: 11px;
+    }
+    .PhoneInputInput {
+        width: 125px;
+        text-indent: 35px;
     }
 }
 
@@ -626,6 +647,17 @@ input::-webkit-inner-spin-button {
                         margin: 5px;
                     }
                 }
+                .song-list-container {
+                    .song-list-content {
+                        .song-card {
+                            .song-info {
+                                .song-name-container {
+                                    width: 70px;
+                                }
+                            }
+                        } 
+                    }    
+                }
             }
         }
     }
@@ -634,9 +666,24 @@ input::-webkit-inner-spin-button {
             font-size: 11px;
             transform: translate3d(9px, 8px, 0);
         }
+        .phone-label {
+            font-size: 11px;
+            transform: translate3d(20px, 8px, 0);
+        }
         .user-input {
             width: 105px;
             height: 25px;
         }  
+    }
+    .PhoneInputCountry {
+        position: absolute;
+        bottom: 11px;
+        left: 18px;
+        --PhoneInputCountryFlag-height: 11px;
+    }
+    .PhoneInputInput {
+        width: 105px;
+        text-indent: 32px;
+        font-size: 11px;
     }
 }
