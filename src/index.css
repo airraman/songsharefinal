@@ -26,3 +26,7 @@ body {
   background-repeat: no-repeat; */
 }
 
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}

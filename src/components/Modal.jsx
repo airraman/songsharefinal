@@ -1,5 +1,8 @@
+import { useSelector } from "react-redux"
+
 const Modal = () =>  {
 
+  const user = useSelector((state) => state.userSelect.value)
   const getModal = () => {
     const modal = document.querySelector(".submit-modal")
     return modal
@@ -8,9 +11,11 @@ const Modal = () =>  {
   const closeModal = () => {
     getModal().close()
   }
+
+  console.log(user)
   return (
     <div className="modal-content">
-        <h2>Thanks for subscribing!</h2>
+        {user === "listener" ? <h2>Thanks for subscribing!</h2> : <h2>Thanks for your submission!</h2>}
         Be sure to check out our playlist of the week!<br/><br/>
         <div className="playlist-container">
           <div className="left-arrow"></div>

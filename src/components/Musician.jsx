@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from "react-redux"
+import { changeUser } from "../features/userSelect"
 import axios from 'axios';
 
 const Musician = () => {
+
+  const dispatch = useDispatch()
 
   const getModal = () => {
     const modal = document.querySelector(".submit-modal")
@@ -55,6 +59,7 @@ const handleSubmit = (e) => {
   .then(response => {
     if (response.status === 200) {
       console.log("POST request successful", musicianObj)
+      dispatch(changeUser("musician"))
       getModal().showModal()
       e.target.reset()
       setArtistName('')
