@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useDispatch } from "react-redux"
+import { changeUser } from "../features/userSelect"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import axios from 'axios';
 
 const Listener = () => {
+
+  const dispatch = useDispatch()
 
   const getModal = () => {
     const modal = document.querySelector(".submit-modal")
@@ -40,6 +44,7 @@ const Listener = () => {
     .then(response => {
       if (response.status === 200) {
         console.log("POST request successful", userObj)
+        dispatch(changeUser("listener"))
         getModal().showModal()
         e.target.reset()
         setUserName('')
