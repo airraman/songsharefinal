@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import Papa from "papaparse"
 import About from "./About"
 import Listener from "./Listener"
@@ -6,9 +7,9 @@ import Musician from "./Musician"
 import SongList from "./SongList"
 
 const Screen = () => {
-
+  
   const [screenFocus, setScreenFocus] = useState("listener")
-
+  
   const userSelection = (selection) => {
     setScreenFocus(selection)
   }
