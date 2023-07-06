@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const optionSelectSlice = createSlice({
     name: "optionSelect",
-    initialState: { value: {option: ""}},
+    initialState: { value: "Listener"},
     
     reducers: {
         changeOption: (state, action) => {

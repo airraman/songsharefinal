@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { confirmOption } from "../features/confirmSelect"
 import Papa from "papaparse"
 import About from "./About"
 import Listener from "./Listener"
@@ -7,7 +8,10 @@ import Musician from "./Musician"
 import SongList from "./SongList"
 
 const Screen = () => {
-  
+
+  const dispatch = useDispatch()
+  const testSelection = useSelector((state) => state.optionSelect.value)
+  // console.log(testSelection)
   const [screenFocus, setScreenFocus] = useState("listener")
   
   const userSelection = (selection) => {
@@ -36,16 +40,16 @@ const Screen = () => {
         <div className="left-screen-content">
           <div className='app-title'>songshare.io</div>
           <div>
-            <div className={screenFocus === "listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("listener")}>
+            <div className={testSelection === "Listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("listener")}>
               <div>Listener</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("musician")}>
+            <div className={testSelection === "Musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("musician")}>
               <div>Musician</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "about" ? "active-tab" : "user-selection"} onClick={() => userSelection("about")}>
+            <div className={testSelection === "About" ? "active-tab" : "user-selection"} onClick={() => userSelection("about")}>
               <div>About</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "song_list" ? "active-tab" : "user-selection"} onClick={() => userSelection("song_list")}>
+            <div className={testSelection === "SongList" ? "active-tab" : "user-selection"} onClick={() => userSelection("song_list")}>
               <div>Song List</div> <span>{`>`}</span>
             </div>
           </div>
