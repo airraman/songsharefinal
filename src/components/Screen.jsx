@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { confirmOption } from "../features/confirmSelect"
+import { changeOption } from "../features/optionSelect"
 import Papa from "papaparse"
 import About from "./About"
 import Listener from "./Listener"
@@ -7,10 +10,15 @@ import SongList from "./SongList"
 
 const Screen = () => {
 
-  const [screenFocus, setScreenFocus] = useState("listener")
-
+  const dispatch = useDispatch()
+  const testSelection = useSelector((state) => state.optionSelect.value)
+  const screenFocus = useSelector((state) => state.confirmSelect.value)
+  // console.log(testSelection)
+  // const [screenFocus, setScreenFocus] = useState("Listener")
+  
   const userSelection = (selection) => {
-    setScreenFocus(selection)
+    dispatch(confirmOption(selection))
+    dispatch(changeOption(selection))
   }
 
   const [songList, setSongList] = useState([])
@@ -35,26 +43,26 @@ const Screen = () => {
         <div className="left-screen-content">
           <div className='app-title'>songshare.io</div>
           <div>
-            <div className={screenFocus === "listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("listener")}>
+            <div className={testSelection === "Listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("Listener")}>
               <div>Listener</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("musician")}>
+            <div className={testSelection === "Musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("Musician")}>
               <div>Musician</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "about" ? "active-tab" : "user-selection"} onClick={() => userSelection("about")}>
+            <div className={testSelection === "About" ? "active-tab" : "user-selection"} onClick={() => userSelection("About")}>
               <div>About</div> <span>{`>`}</span>
             </div>
-            <div className={screenFocus === "song_list" ? "active-tab" : "user-selection"} onClick={() => userSelection("song_list")}>
+            <div className={testSelection === "SongList" ? "active-tab" : "user-selection"} onClick={() => userSelection("SongList")}>
               <div>Song List</div> <span>{`>`}</span>
             </div>
           </div>
          
         </div>
         <div className="right-screen-content">
-          {screenFocus === "listener" && <Listener /> }
-          {screenFocus === "musician" && <Musician />}
-          {screenFocus === "about" && <About />}
-          {screenFocus === "song_list" && <SongList songList={songList}/>}
+          {screenFocus === "Listener" && <Listener /> }
+          {screenFocus === "Musician" && <Musician />}
+          {screenFocus === "About" && <About />}
+          {screenFocus === "SongList" && <SongList songList={songList}/>}
         </div>
       </div>
       
