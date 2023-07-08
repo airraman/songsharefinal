@@ -5,7 +5,7 @@
     justify-content: center;
     justify-content: space-evenly;
     position: relative;
-    height: 90vh;
+    height: calc(90vh - 50px);
     width: 480px;
     border-radius: 20px;
     border: solid 4px rgba(255, 255, 255, 0.397);
@@ -307,13 +307,16 @@
             border: solid 2px rgb(97, 97, 97);
             border-radius: 50%;
             background: radial-gradient(white, #D9D9D2);
-            transition: 0.2s;
+            // transition: 0.2s;
             z-index: 2;
+        }
+        .inner-circle:active {
+            box-shadow: inset 0 0 5px 2px rgb(146, 146, 146);
         }
     }
     .active {
         border: solid 2px rgb(146, 146, 146);
-        box-shadow: inset 0 0 20px 2px rgb(4, 181, 235);
+        
     }
 }
 
@@ -421,7 +424,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 425PX ****/
 @media (max-width: 425px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
@@ -529,7 +532,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 375PX ****/
 @media (max-width: 375px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
@@ -623,7 +626,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 320PX ****/
 @media (max-width: 320px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
