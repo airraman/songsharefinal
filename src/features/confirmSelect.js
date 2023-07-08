@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const confirmSelectSlice = createSlice({
     name: "confirmSelect",
-    initialState: { value: {confirm: ""}},
+    initialState: { value: "Listener"},
     
     reducers: {
         confirmOption: (state, action) => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeOption } from "../features/optionSelect"
+import { confirmOption } from "../features/confirmSelect"
 
 const Circle = () => {
 
@@ -29,11 +30,12 @@ const Circle = () => {
       setIndex((prevIndex) => Math.min(prevIndex + 1, testList.length - 1));
       dispatch(changeOption(testList[index]))
     }
-    
+    console.log(testSelection)
   }
 
   const handleTouch = (e) => {
     const touch = e.touches[0].clientY
+    // dispatch(changeOption(""))
     setStartY(touch)
   }
 
@@ -43,6 +45,7 @@ const Circle = () => {
  
   const handleSelection = () => {
     console.log("Selected Index", testSelection)
+    dispatch(confirmOption(testSelection))
   }
   return (
     <div className="circle-container">
