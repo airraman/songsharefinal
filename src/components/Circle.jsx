@@ -6,12 +6,12 @@ import { confirmOption } from "../features/confirmSelect"
 const Circle = () => {
 
   const dispatch = useDispatch()
-  const testSelection = useSelector((state) => state.optionSelect.value)
+  const selection = useSelector((state) => state.optionSelect.value)
   const [cursorPos, setCursorPos] = useState({})
   const [index, setIndex] = useState(0)
   const [startY, setStartY] = useState(null)
-  let testList = ["Listener", "Musician", "About", "SongList"]
-  // let index = 0
+  let optionList = ["Listener", "Musician", "About", "SongList"]
+
   const handleCursorMove = (e) => {
     if (startY === null) return
     
@@ -24,28 +24,28 @@ const Circle = () => {
     if (deltaY > sensitivity) {
       // Scroll down (counter-clockwise)
       setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      dispatch(changeOption(testList[index]))
+      dispatch(changeOption(optionList[index]))
     } else if (deltaY < -sensitivity) {
       // Scroll up (clockwise)
-      setIndex((prevIndex) => Math.min(prevIndex + 1, testList.length - 1));
-      dispatch(changeOption(testList[index]))
+      setIndex((prevIndex) => Math.min(prevIndex + 1, optionList.length - 1));
+      dispatch(changeOption(optionList[index]))
     }
-    console.log(testSelection)
   }
 
   const handleTouch = (e) => {
     const touch = e.touches[0].clientY
-    // dispatch(changeOption(""))
+    
     setStartY(touch)
   }
 
   const handleTouchEnd = () => {
+    // dispatch(changeOption(""))
     setStartY(null)
   }
  
   const handleSelection = () => {
-    console.log("Selected Index", testSelection)
-    dispatch(confirmOption(testSelection))
+    console.log("Selected Index", selection)
+    dispatch(confirmOption(selection))
   }
   return (
     <div className="circle-container">
