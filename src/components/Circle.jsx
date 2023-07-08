@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeOption } from "../features/optionSelect"
 import { confirmOption } from "../features/confirmSelect"
@@ -7,28 +7,34 @@ const Circle = () => {
 
   const dispatch = useDispatch()
   const selection = useSelector((state) => state.optionSelect.value)
-  const [cursorPos, setCursorPos] = useState({})
-  const [index, setIndex] = useState(0)
-  const [startY, setStartY] = useState(null)
+  const mainCircle = useRef(null);
+  const [moveActive, setMoveActive] = useState(false)
   let optionList = ["Listener", "Musician", "About", "SongList"]
 
-  const handleCursorMove = (e) => {
-    if (startY === null) return
-    
-    
-    let xPos = e.touches[0].clientX
-    let yPos = e.touches[0].clientY
-    const deltaY = e.touches[0].clientY - startY
-    const sensitivity = 5
+  const handleTouchMove = (e) => {
+    setMoveActive(true)
+    let touch = e.touches[0];
+    let x = touch.clientX - mainCircle.current.getBoundingClientRect().left;
+    let y = touch.clientY - mainCircle.current.getBoundingClientRect().top;
 
-    if (deltaY > sensitivity) {
-      // Scroll down (counter-clockwise)
-      setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-      dispatch(changeOption(optionList[index]))
-    } else if (deltaY < -sensitivity) {
-      // Scroll up (clockwise)
-      setIndex((prevIndex) => Math.min(prevIndex + 1, optionList.length - 1));
-      dispatch(changeOption(optionList[index]))
+    let quadrant;
+
+    if (x < mainCircle.current.offsetWidth / 2) {
+      if (y < mainCircle.current.offsetHeight / 2) {
+        quadrant = 1;
+        dispatch(changeOption(optionList[0]))
+      } else {
+        quadrant = 4;
+        dispatch(changeOption(optionList[3]))
+      }
+    } else {
+      if (y < mainCircle.current.offsetHeight / 2) {
+        quadrant = 2;
+        dispatch(changeOption(optionList[1]))
+      } else {
+        quadrant = 3;
+        dispatch(changeOption(optionList[2]))
+      }
     }
   }
 
@@ -38,21 +44,20 @@ const Circle = () => {
     setStartY(touch)
   }
 
-  const handleTouchEnd = () => {
-    // dispatch(changeOption(""))
-    setStartY(null)
-  }
  
   const handleSelection = () => {
     console.log("Selected Index", selection)
     dispatch(confirmOption(selection))
   }
+
   return (
     <div className="circle-container">
-      <div className="main-circle" onTouchStart={handleTouch} onTouchMove={handleCursorMove} onTouchEnd={handleTouchEnd}>
-        <div className="inner-circle" onClick={handleSelection}>
-
-        </div>
+      <div className={`main-circle ${moveActive ? "active" : ""}`} ref={mainCircle} onTouchMove={handleTouchMove} onTouchEnd={() => setMoveActive(false)}>
+        <div className="quadrant" id="quadrant1"></div>
+        <div className="quadrant" id="quadrant2"></div>
+        <div className="quadrant" id="quadrant3"></div>
+        <div className="quadrant" id="quadrant4"></div>
+        <div className="inner-circle" onClick={handleSelection}></div>
       </div>
     </div>
   )
