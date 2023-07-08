@@ -5,7 +5,7 @@
     justify-content: center;
     justify-content: space-evenly;
     position: relative;
-    height: 90vh;
+    height: calc(90vh - 50px);
     width: 480px;
     border-radius: 20px;
     border: solid 4px rgba(255, 255, 255, 0.397);
@@ -102,9 +102,6 @@
             flex-direction: column;
             // align-items: center;
             width: 255px;
-            // background: url("/DavidBowie.png");
-            // background-size: 50vh;
-            // background-repeat: no-repeat;
             .subscriber-form-container {
                 overflow-y: auto;
                 h2 {
@@ -270,6 +267,8 @@
     z-index: 3;
 
     .main-circle {
+        position: relative;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -277,8 +276,30 @@
         min-width: 32vh;
         border: solid 2px rgb(163, 163, 163);
         border-radius: 50%;
-        background: silver;
-        
+        // background: silver;
+        .quadrant {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: silver;
+          }
+          
+          #quadrant1 {
+            top: 0;
+            left: 0;
+          }
+          #quadrant2 {
+            top: 0;
+            left: 50%;
+          }
+          #quadrant3 {
+            top: 50%;
+            left: 0;
+          }
+          #quadrant4 {
+            top: 50%;
+            left: 50%;
+          }
 
         .inner-circle {
             min-height: 14vh;
@@ -286,7 +307,16 @@
             border: solid 2px rgb(97, 97, 97);
             border-radius: 50%;
             background: radial-gradient(white, #D9D9D2);
+            // transition: 0.2s;
+            z-index: 2;
         }
+        .inner-circle:active {
+            box-shadow: inset 0 0 5px 2px rgb(146, 146, 146);
+        }
+    }
+    .active {
+        border: solid 2px rgb(146, 146, 146);
+        
     }
 }
 
@@ -394,7 +424,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 425PX ****/
 @media (max-width: 425px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
@@ -502,7 +532,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 375PX ****/
 @media (max-width: 375px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
@@ -596,7 +626,7 @@ input::-webkit-inner-spin-button {
 /**** MAX-WIDTH 320PX ****/
 @media (max-width: 320px) {
     .ipod-container {
-        height: 97vh;
+        height: calc(97vh - 50px);
         width: 97vw;
     }
 
