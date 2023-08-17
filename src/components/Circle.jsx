@@ -17,33 +17,21 @@ const Circle = () => {
     let x = touch.clientX - mainCircle.current.getBoundingClientRect().left;
     let y = touch.clientY - mainCircle.current.getBoundingClientRect().top;
 
-    let quadrant;
 
     if (x < mainCircle.current.offsetWidth / 2) {
       if (y < mainCircle.current.offsetHeight / 2) {
-        quadrant = 1;
         dispatch(changeOption(optionList[0]))
       } else {
-        quadrant = 4;
         dispatch(changeOption(optionList[3]))
       }
     } else {
       if (y < mainCircle.current.offsetHeight / 2) {
-        quadrant = 2;
         dispatch(changeOption(optionList[1]))
       } else {
-        quadrant = 3;
         dispatch(changeOption(optionList[2]))
       }
     }
   }
-
-  const handleTouch = (e) => {
-    const touch = e.touches[0].clientY
-    
-    setStartY(touch)
-  }
-
  
   const handleSelection = () => {
     console.log("Selected Index", selection)

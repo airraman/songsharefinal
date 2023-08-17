@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from "react-redux"
 import { changeUser } from "../features/userSelect"
 import 'react-phone-number-input/style.css'
@@ -20,18 +20,6 @@ const Listener = () => {
   let userObj ={
     userName,
     phoneNumber
-  }
-
-  function handleUserName(event){
-    // console.log(event.target.value)
-    setUserName(event.target.value)
-    // console.log(userName)
-  }
-
-  function handlePhoneNumber(event){
-    // console.log(event.target.value)
-    setPhoneNumber(event.target.value)
-    // console.log(phoneNumber)
   }
 
   const handleSubmit = (e) => {
@@ -72,7 +60,6 @@ const Listener = () => {
               <label className="phone-label">
                   Enter Number
               </label>
-              {/* <input type="number" name="user-number" className="user-input" onChange={handlePhoneNumber}></input> */}
               <PhoneInput defaultCountry="US" onChange={setPhoneNumber}/>
             </div>
             <div className="tag-line">
