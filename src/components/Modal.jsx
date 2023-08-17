@@ -19,7 +19,7 @@ const Modal = () =>  {
         Be sure to check out our playlist of the week!<br/><br/>
         <div className="playlist-container">
           <div className="left-arrow"></div>
-          <a href="https://open.spotify.com/playlist/6U6Z8OWN4E49g4Mn0lXA4g?si=240908436c88468b" target="_blank"><img src="/playlistsymbol.png"/></a>
+          <a href="https://open.spotify.com/playlist/6U6Z8OWN4E49g4Mn0lXA4g?si=240908436c88468b" target="_blank" rel="noreferrer"><img src="/playlistsymbol.png"/></a>
           <div className="right-arrow"></div>
         </div>
         <button className="button" onClick={closeModal}>close</button>

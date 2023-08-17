@@ -11,10 +11,8 @@ import SongList from "./SongList"
 const Screen = () => {
 
   const dispatch = useDispatch()
-  const testSelection = useSelector((state) => state.optionSelect.value)
+  const optionSelection = useSelector((state) => state.optionSelect.value)
   const screenFocus = useSelector((state) => state.confirmSelect.value)
-  // console.log(testSelection)
-  // const [screenFocus, setScreenFocus] = useState("Listener")
   
   const userSelection = (selection) => {
     dispatch(confirmOption(selection))
@@ -43,18 +41,22 @@ const Screen = () => {
         <div className="left-screen-content">
           <div className='app-title'>songshare.io</div>
           <div>
-            <div className={testSelection === "Listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("Listener")}>
+            <div className={optionSelection === "Listener" ? "active-tab" : "user-selection"} onClick={() => userSelection("Listener")}>
               <div>Listener</div> <span>{`>`}</span>
             </div>
-            <div className={testSelection === "Musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("Musician")}>
+            <div className={optionSelection === "Musician" ? "active-tab" : "user-selection"} onClick={() => userSelection("Musician")}>
               <div>Musician</div> <span>{`>`}</span>
             </div>
-            <div className={testSelection === "About" ? "active-tab" : "user-selection"} onClick={() => userSelection("About")}>
+            <div className={optionSelection === "About" ? "active-tab" : "user-selection"} onClick={() => userSelection("About")}>
               <div>About</div> <span>{`>`}</span>
             </div>
-            <div className={testSelection === "SongList" ? "active-tab" : "user-selection"} onClick={() => userSelection("SongList")}>
+            <div className={optionSelection === "SongList" ? "active-tab" : "user-selection"} onClick={() => userSelection("SongList")}>
               <div>Song List</div> <span>{`>`}</span>
             </div>
+          </div>
+
+          <div className="logo-container">
+            <img src="/SongshareLogo.jpeg" className="logo"/>
           </div>
          
         </div>
