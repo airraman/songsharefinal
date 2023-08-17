@@ -101,7 +101,7 @@
                 justify-content: center;
                 height: 100%;
                 .logo {
-                    height: 150px;
+                    height: 14vh;
                     border-radius: 10px;
                 }
             }
@@ -112,7 +112,6 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            // align-items: center;
             width: 255px;
             .subscriber-form-container {
                 overflow-y: auto;
